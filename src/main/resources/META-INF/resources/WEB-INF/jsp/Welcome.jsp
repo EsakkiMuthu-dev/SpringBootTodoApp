@@ -3,7 +3,7 @@
 <title> Welcome Page </title>
 </head>
 <body>
-<h1>Welcome to Welcome Page !</h1>
-<p>You are Successfully Logged in!
-</p>
+<h1>Welcome ${name}</h1>
+<hr/>
+<a href="/list-todos">Manage </a> your todos
 </html>
