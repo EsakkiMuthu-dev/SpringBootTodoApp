@@ -1,4 +1,4 @@
-package com.firstWebapp.SpringTodo;
+package com.firstwebapp.SpringTodo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.firstWebapp.SpringTodo;
+package com.firstwebapp.SpringTodo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
