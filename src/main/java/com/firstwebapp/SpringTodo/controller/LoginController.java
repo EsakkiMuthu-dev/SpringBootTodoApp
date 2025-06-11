@@ -1,4 +1,4 @@
-package com.firstwebapp.SpringTodo.login;
+package com.firstwebapp.SpringTodo.controller;
 
 import com.firstwebapp.SpringTodo.service.AuthenticationService;
 import org.slf4j.Logger;
