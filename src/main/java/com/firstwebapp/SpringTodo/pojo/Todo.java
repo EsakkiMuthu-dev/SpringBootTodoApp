@@ -3,22 +3,28 @@ package com.firstwebapp.SpringTodo.pojo;
 import java.time.LocalDate;
 
 public class Todo {
+    private int id;
     private String name;
-    private String author;
     private LocalDate targetDate;
     private  boolean isCompleted;
 
-    public Todo(String name,String author, LocalDate targetDate)
+    private static int idCount =0;
+
+    public Todo(String name,LocalDate targetDate,boolean isCompleted)
     {
+        this.id = ++idCount;
         this.name = name;
-        this.author = author;
         this.targetDate = targetDate;
-        this.isCompleted = false;
+        this.isCompleted = isCompleted;
     }
 
+    public int getId() {
+        return id;
+    }
 
-
-
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -28,20 +34,12 @@ public class Todo {
         this.name = name;
     }
 
-    public boolean isCompleted() {
+    public boolean getIsCompleted() {
         return isCompleted;
     }
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public LocalDate getTargetDate() {
@@ -56,7 +54,6 @@ public class Todo {
     public String toString() {
         return "Todo{" +
                 "name='" + name + '\'' +
-                ", author='" + author + '\'' +
                 ", targetDate=" + targetDate +
                 ", isCompleted=" + isCompleted +
                 '}';

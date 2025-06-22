@@ -3,42 +3,39 @@ package com.firstwebapp.SpringTodo.controller;
 import com.firstwebapp.SpringTodo.service.AuthenticationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes("name")
-public class LoginController {
+public class WelcomeController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private AuthenticationService authenticationService;
 
-    public LoginController(AuthenticationService authenticationService)
+    public WelcomeController(AuthenticationService authenticationService)
     {
         this.authenticationService = authenticationService;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login()
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String goToWelcomePage(ModelMap modelMap)
     {
         logger.info("User tries to Login: ");
-        return "Login";
+        modelMap.put("name",getLoggedInUserName()+" \uD83D\uDC9D");
+        return "Welcome";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public  String goToWelcome(@RequestParam String name , @RequestParam String password, ModelMap modelMap)
+    public String getLoggedInUserName()
     {
-        modelMap.put("name",name);
-        if(this.authenticationService.authenticate(name,password))
-        {
-            return "Welcome";
-        }
-        modelMap.put("errorMsg","Your credentials is invalid");
-        return "Login";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
     }
 
 }
